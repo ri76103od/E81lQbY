@@ -13,6 +13,5 @@ pages:
     - rm -rf public
     - mv .public public
   artifacts:
-      - public
   rules:
     - if: $CI_COMMIT_BRANCH == $CI_DEFAULT_BRANCH
