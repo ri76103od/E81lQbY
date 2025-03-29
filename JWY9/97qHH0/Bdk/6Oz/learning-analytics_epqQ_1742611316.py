@@ -36,7 +36,6 @@ setup(
     author='Preston Parry',
     author_email='ClimbsBytes@gmail.com',
 
-    license='MIT',
 
     classifiers=[
         'Development Status :: 5 - Production/Stable',
