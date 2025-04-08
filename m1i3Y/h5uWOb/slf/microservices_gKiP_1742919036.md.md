@@ -8,7 +8,6 @@ Please ensure your pull request adheres to the following guidelines:
 - New categories, or improvements to the existing categorization are welcome.
 - Keep descriptions short and simple, but descriptive.
 - End all descriptions with a full stop/period.
-- Check your spelling and grammar.
 - The pull request should include a link to the package and why it should be included.
 - Patterns should be software related
 
