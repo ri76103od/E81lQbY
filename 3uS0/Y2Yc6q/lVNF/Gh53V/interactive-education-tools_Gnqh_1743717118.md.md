@@ -21,7 +21,6 @@ Welcome to Hacktoberfest, a month-long celebration of open source! As a student,
 ## How to Contribute:
 
 ### 1. Give a Star to the Repository:
-Start by showing your support! Give a star to the repository you are interested in contributing to. This helps the project gain visibility among other developers.
 
 ### 2. Create Your Own Issue:
 Before making changes, it's good practice to check if the project has existing issues or create one if you find something that needs improvement or fixing. Issues are a great way to communicate with the maintainers and other contributors about what you are working on.
