@@ -1,0 +1,31 @@
+# Open AI
+OPENAI_API_KEY="Your OpenAI API Key"
+
+# GROQ
+GROQ_API_KEY="Your GROQ API Key"
+
+# Supabase
+NEXT_PUBLIC_SUPABASE_URL="Your Supabase URL"
+SUPABASE_SERVICE_ROLE_KEY="Your Supabase Service Role Key"
+NEXT_PUBLIC_SUPABASE_ANON_KEY="Your Supabase Anon Key"
+
+
+# Github
+GITHUB_ID="Your Github App ID"
+GITHUB_SECRET="Your Github App Secret"
+
+
+# Next Auth
+NEXTAUTH_URL="http://localhost:3000"
+NEXTAUTH_SECRET="Your Next Auth Secret" # Generate with `openssl rand -base64 64
+
+# Next
+NEXT_PUBLIC_APP_URL="http://localhost:3000"
+NEXT_PUBLIC_API_URL="http://localhost:3000/api"
+NEXT_PUBLIC_APP_ENV="development"
+
+
+# Google
+GOOGLE_API_KEY="Your Google API Key"
+GOOGLE_CLIENT_ID="Your Google Client ID"
+GOOGLE_CLIENT_SECRET="Your Google Client Secret"
