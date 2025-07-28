@@ -1,0 +1,19 @@
+language: php
+
+dist: trusty
+
+php:
+  - 7.2
+  - 7.3
+  - 7.4
+
+before_script:
+  - composer self-update
+  - composer install --prefer-source
+
+script:
+  - mkdir -p build/logs
+  - php vendor/bin/phpunit
+
+after_script:
+  - php vendor/bin/coveralls -v
