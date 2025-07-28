@@ -1,0 +1,78 @@
+stages:
+  - setup
+  - lint
+  - tests
+  - docs
+
+.install-deps-template: &install-deps
+  image: inducer/ci-base-image
+  tags:
+    - docker-runner
+  before_script:
+    - curl -LsSf https://astral.sh/uv/install.sh | sh
+    - export PATH="$HOME/.local/bin:$PATH"
+    - uv sync --frozen
+
+.quality-template: &quality
+  <<: *install-deps
+  stage: lint
+  except:
+    - tags
+
+.test-template: &test
+  <<: *install-deps
+  script:
+    - "bash ./.ci/run-tests-for-ci.sh"
+  stage: tests
+  except:
+    - tags
+  coverage: "/TOTAL.+ ([0-9]{1,3}%)/"
+
+setup:
+  <<: *install-deps
+  stage: setup
+  script: "true"
+
+ruff:
+  <<: *quality
+  script: |
+    uv run ruff check
+
+basedpyright:
+  <<: *quality
+  variables:
+    RELATE_LOCAL_TEST_SETTINGS: './local_settings_example.py'
+  script: uv run basedpyright
+
+safety:
+  <<: *quality
+  script: uv run ./.ci/run-safety.sh
+
+Python 3:
+  <<: *test
+  needs: [setup]
+
+Python 3 Expensive:
+  <<: *test
+  variables:
+    RL_CI_TEST: expensive
+  needs: [setup]
+
+Python 3 CLI Tool:
+  <<: *test
+  script:
+    - git clone https://github.com/inducer/relate-sample
+    - cd relate-sample
+    - uv run relate validate .
+    - uv run relate test-code questions/autograded-python-example.yml
+    - uv run relate expand-yaml flows/quiz-test.yml > /dev/null
+  needs: [setup]
+
+Documentation:
+  <<: *install-deps
+  stage: docs
+  variables:
+    RELATE_LOCAL_TEST_SETTINGS: './local_settings_example.py'
+  script:
+    - uv run bash ./doc/build-docs.sh
+  needs: [setup]
